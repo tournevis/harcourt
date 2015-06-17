@@ -44,13 +44,17 @@ class ofApp : public ofxAndroidApp{
 		ofxCvGrayscaleImage grayCv;
 		ofxCvGrayscaleImage grayImage;
 		ofxCvHaarFinder faceFinder;
+		ofxCvHaarFinder eyeFinder;
 		std::vector<ofxCvBlob> faces;
+		std::vector<ofxCvBlob> eyes;
+
 
 		ofColor alphaCircle;
 
 		ofTexture           myTexture;
         unsigned char*      grayVideoData;
 
+		int oneTouch;
 		int one_second_time;
 		int camera_fps;
 		int frames_one_sec;
