@@ -20,8 +20,6 @@ void ofApp::setup(){
 	grayVideoData= new unsigned char [grabberWidth*grabberHeight*3];
 	myTexture.allocate(grabberWidth,grabberHeight,GL_RGB);
 
-	//photoIcn.loadImage("images/texture01.jpg");
-	//photoIcn.allocate(250,250);
 	shotPicture = false;
 
 	colorCv.allocate(grabberWidth, grabberHeight);
@@ -72,6 +70,13 @@ void ofApp::update(){
     		one_second_time = ofGetSystemTime();
     	}
 
+
+
+		colorCv = grabber.getPixels();
+		grayImage = colorCv;
+		colorCvSmall.scaleIntoMe(colorCv, CV_INTER_NN);
+		grayCv = colorCvSmall;
+
 		/*if( oneTouch <1 ){
          	unsigned char* pixelData = grabber.getPixels();
 
@@ -92,11 +97,6 @@ void ofApp::update(){
 			oneTouch += 1;
     	}*/
 
-		colorCv = grabber.getPixels();
-		grayImage = colorCv;
-		colorCvSmall.scaleIntoMe(colorCv, CV_INTER_NN);
-		grayCv = colorCvSmall;
-
 		imageCv = grayImage.getPixelsRef();
 		imageCv.mirror(false,true);
 
@@ -106,6 +106,8 @@ void ofApp::update(){
 		imageCv.rotate90(1);
 
 		faceFinder.findHaarObjects(grayCv);
+
+
 		//eyeFinder.findHaarObjects(grayCv);
 
 		//eyes = eyeFinder.blobs;
@@ -126,17 +128,9 @@ void ofApp::draw(){
     //grabber.update();
     }else{
 
-    	//imageCv.resize(grabberWidth,grabberHeight);
-    	//imageCv.rotate90(3);
-		imageCv.draw(20,20);
-		/*picture = imageCv.getPixels();
-		grayImage = imageCv.getPixels() ;
-		//grayImage.rotate90(3);
 
-		ofPushMatrix();
-		ofRotateZ(-90);
-    	grayImage.draw(20 -620 ,20);
-    	ofPopMatrix();*/
+		imageCv.draw(20,20);
+
 
     	float scaleFactor = 3.0;
     	ofPushStyle();

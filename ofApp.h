@@ -40,14 +40,15 @@ class ofApp : public ofxAndroidApp{
 		ofxCvColorImage colorCv;
 		ofxCvColorImage colorCvSmall;
 		ofImage imageCv;
-		ofImage photoIcn;
 		ofxCvGrayscaleImage grayCv;
 		ofxCvGrayscaleImage grayImage;
 		ofxCvHaarFinder faceFinder;
-		ofxCvHaarFinder eyeFinder;
 		std::vector<ofxCvBlob> faces;
-		std::vector<ofxCvBlob> eyes;
 
+		/*
+		ofxCvHaarFinder eyeFinder;
+		std::vector<ofxCvBlob> eyes;
+		*/
 
 		ofColor alphaCircle;
 
